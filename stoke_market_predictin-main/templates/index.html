@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Market Prediction</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 20px; }
+        input[type="text"] { padding: 10px; font-size: 16px; width: 300px; }
+        input[type="submit"] { padding: 10px 20px; font-size: 16px; }
+        .plot-container { margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1>Stock Market Prediction (Next 30 Days)</h1>
+
+    <form action="/" method="get">
+        <input type="text" name="ticker" placeholder="Enter company ticker (e.g. AAPL, RELIANCE.NS)" required>
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if plot_data %}
+        <div class="plot-container">
+            <img src="data:image/png;base64,{{ plot_data }}" alt="Stock Prediction">
+        </div>
+    {% endif %}
+</body>
+</html>
